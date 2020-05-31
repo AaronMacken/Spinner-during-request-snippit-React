@@ -6,9 +6,14 @@ export class Todos extends Component {
     return (
       <div className="container">
         <div className="row">
-          {this.props.todos.map((todo) => (
-            <div className="col-12 col-md-6 mt-5">
-              <Todo todo={todo.title} />
+          {this.props.users.map((todo) => (
+            <div className="col-12 col-md-6 mt-5 todos-col" key={todo.id}>
+              <Todo
+                todo={todo.email}
+                update={this.props.update}
+                delete={this.props.delete}
+                id={todo.id}
+              />
             </div>
           ))}
         </div>

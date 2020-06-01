@@ -1,10 +1,9 @@
 import React from "react";
 import "./App.css";
 import axios from "axios";
-import Todos from "./Todos/Todos";
+import Users from "./Users/Users";
 import Spinner from "./Spinner";
-import AddTodo from "./Todos/AddTodo";
-import Increment from "./Increment";
+import AddUser from "./Users/AddUser";
 
 class App extends React.Component {
   constructor(props) {
@@ -56,7 +55,7 @@ class App extends React.Component {
       let updateInfo = res.data.updateData;
 
       let updatedUsers = this.state.users.map((user) => {
-        if (user.id == id) {
+        if (user.id === id) {
           return {
             email: updateInfo,
             id: id,
@@ -74,7 +73,7 @@ class App extends React.Component {
   deleteUser = async (id) => {
     try {
       this.setState({ isLoading: true });
-      let res = await axios.delete(`https://reqres.in/api/users${id}`);
+      await axios.delete(`https://reqres.in/api/users${id}`);
       this.setState({ users: this.state.users.filter((e) => e.id !== id) });
       this.setState({ isLoading: false });
     } catch (error) {
@@ -86,7 +85,7 @@ class App extends React.Component {
     let content = this.state.isLoading ? (
       <Spinner />
     ) : (
-      <Todos
+      <Users
         users={this.state.users}
         delete={this.deleteUser}
         update={this.updateUser}
@@ -95,7 +94,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1 style={{ textAlign: "center" }}>Users App: State And Props</h1>
-        <AddTodo createNewTodo={this.createNewUser} />
+        <AddUser createNewUser={this.createNewUser} />
         <div className="content-div">{content}</div>
       </div>
     );

@@ -9,12 +9,11 @@
 
 .todo {
     border-radius: 5px;
-    height: 5rem;
-    min-width: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #f1f1f1;
+    width: 30rem;
 }
 
 .todos-col {

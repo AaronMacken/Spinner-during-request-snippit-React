@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 
-export class EditTodo extends Component {
+export class EditUser extends Component {
   constructor(props) {
     super(props);
 
@@ -31,32 +32,33 @@ export class EditTodo extends Component {
         {/* OPEN MODAL BUTTON */}
         <button
           type="button"
-          class="btn btn-primary"
+          className="btn btn-primary"
           data-toggle="modal"
           data-target={`#modal${this.props.userData.id}`}
+          style={{ marginBottom: "1rem" }}
         >
           Edit
         </button>
 
         {/* CONTAINING DIV */}
         <div
-          class="modal fade"
+          className="modal fade"
           id={`modal${this.props.userData.id}`}
-          tabindex="-1"
+          tabIndex="-1"
           role="dialog"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
           onClick={this.resetPlaceholder}
         >
-          <div class="modal-dialog" role="document" style={{ zIndex: 999 }}>
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
-                  Edit Todo
+          <div className="modal-dialog" role="document" style={{ zIndex: 999 }}>
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
+                  Edit Email
                 </h5>
                 <button
                   type="button"
-                  class="close"
+                  className="close"
                   data-dismiss="modal"
                   aria-label="Close"
                   onClick={this.resetPlaceholder}
@@ -65,7 +67,7 @@ export class EditTodo extends Component {
                 </button>
               </div>
 
-              <div class="modal-body">
+              <div className="modal-body">
                 <input
                   type="text"
                   name="editInput"
@@ -75,10 +77,10 @@ export class EditTodo extends Component {
                   className="form-control"
                 />
               </div>
-              <div class="modal-footer">
+              <div className="modal-footer">
                 <button
                   type="button"
-                  class="btn btn-secondary"
+                  className="btn btn-secondary"
                   data-dismiss="modal"
                   onClick={this.resetPlaceholder}
                 >
@@ -86,7 +88,7 @@ export class EditTodo extends Component {
                 </button>
                 <button
                   type="submit"
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                   onClick={this.handleSubmit}
                   data-dismiss="modal"
                 >
@@ -101,4 +103,9 @@ export class EditTodo extends Component {
   }
 }
 
-export default EditTodo;
+EditUser.propTypes = {
+  userData: PropTypes.object.isRequired,
+  update: PropTypes.func.isRequired,
+};
+
+export default EditUser;

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
+import PropTypes from "prop-types";
 
-export class AddTodo extends Component {
+class AddUser extends Component {
   constructor(props) {
     super(props);
 
@@ -16,7 +17,7 @@ export class AddTodo extends Component {
 
   submitNew = (e) => {
     e.preventDefault();
-    this.props.createNewTodo({
+    this.props.createNewUser({
       email: this.state.input,
       name: "Frank",
       id: uuidv4(),
@@ -47,4 +48,8 @@ export class AddTodo extends Component {
   }
 }
 
-export default AddTodo;
+AddUser.propTypes = {
+  createNewUser: PropTypes.func.isRequired,
+};
+
+export default AddUser;

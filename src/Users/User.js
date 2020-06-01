@@ -1,13 +1,17 @@
 import React from "react";
 import EditUser from "./EditUser";
 import PropTypes from "prop-types";
+import { NavLink, Link } from "react-router-dom";
 
 export default function User(props) {
   return (
     <div className="todo">
-      <p style={{ padding: "2rem", width: "75%", textAlign: "center" }}>
-        {props.user}
-      </p>
+      <Link to={`/users/${props.id}`}>
+        <p style={{ padding: "2rem", width: "75%", textAlign: "center" }}>
+          {props.user}
+        </p>
+      </Link>
+
       <div style={{ display: "flex", flexDirection: "column" }}>
         <EditUser
           userData={{
@@ -27,10 +31,6 @@ export default function User(props) {
   );
 }
 
-// user={user.email}
-// update={this.props.update}
-// delete={this.props.delete}
-// id={user.id}
 User.propTypes = {
   id: PropTypes.number.isRequired,
   user: PropTypes.string.isRequired,
